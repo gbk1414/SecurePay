@@ -21,6 +21,11 @@ repositories {
 	mavenCentral()
 }
 
+//jar 파일 분할 false
+jar {
+	enabled = false
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
