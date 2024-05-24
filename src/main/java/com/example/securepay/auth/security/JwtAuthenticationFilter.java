@@ -30,7 +30,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JwtAuthenticationFilter(JwtProvider jwtProvider, AccessLogRepository accessLogRepository) {
         this.jwtProvider = jwtProvider;
         this.accessLogRepository = accessLogRepository;
-        setFilterProcessesUrl("/com/example/securepay/auth/login");
+        setFilterProcessesUrl("/auth/login");
+        super.setUsernameParameter("email");
     }
 
     @Override

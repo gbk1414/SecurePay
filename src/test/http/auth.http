@@ -1,19 +1,19 @@
-POST localhost:8080/auth/signup
-Content-Type: application/json
-
-{
-  "name": "Robbie",
-  "email": "robbie@mail.com",
-  "password": "robbie1234",
-  "phone": "010-0000-0000"
-}
-###
-
-POST localhost:8080/auth/login
-Content-Type: application/json
-
-{
-  "email": "robbie@mail.com",
-  "password": "robbie1234"
-}
-###
+#POST localhost:8080/auth/signup
+#Content-Type: application/json
+#
+#{
+#  "name": "Robbie",
+#  "email": "robbie@mail.com",
+#  "password": "robbie1234",
+#  "phone": "010-0000-0000"
+#}
+####
+#
+#POST localhost:8080/auth/login
+#Content-Type: application/json
+#
+#{
+#  "email": "robbie@mail.com",
+#  "password": "robbie1234"
+#}
+####
