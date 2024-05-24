@@ -1,4 +1,4 @@
-package global.config;
+package com.example.securepay.global.config;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @OpenAPIDefinition(
 	info = @Info(
-		title = "Back Material API",
-		description = "Back Material 서버 API 문서",
+		title = "SecurePay API",
+		description = "SecurePay 서버 API 문서",
 		version = "V1"
 	)
 )

@@ -1,15 +1,15 @@
-package auth.service.impl;
+package com.example.securepay.auth.service.impl;
 
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import auth.dto.SignupRequestDto;
-import auth.dto.SignupResponseDto;
-import auth.entity.User;
-import auth.repository.UserRepository;
-import auth.service.UserService;
+import com.example.securepay.auth.dto.SignupResponseDto;
+import com.example.securepay.auth.dto.SignupRequestDto;
+import com.example.securepay.auth.entity.User;
+import com.example.securepay.auth.repository.UserRepository;
+import com.example.securepay.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 @Service

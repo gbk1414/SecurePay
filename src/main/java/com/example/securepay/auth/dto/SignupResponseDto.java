@@ -1,4 +1,4 @@
-package auth.dto;
+package com.example.securepay.auth.dto;
 
 import lombok.Getter;
 
