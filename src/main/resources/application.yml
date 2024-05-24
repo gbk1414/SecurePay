@@ -12,9 +12,6 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: ${{ secrets.POSTGRE_URL }}
-    username: ec2-user
-    password: ${{ secrets.POSTGRE_PASSWORD }}
     driver-class-name: org.postgresql.Driver
 
 springdoc:
@@ -30,6 +27,7 @@ springdoc:
   model-and-view-allowed: true
   default-produces-media-type: application/json
   default-consumes-media-type: application/json
+  show-login-endpoint: true #로그인 시 swagger에 표시하려고 하는 표현
 
 logging:
   file:
@@ -39,7 +37,3 @@ logging:
       max-file-size: 50MB
       max-history: 7
       file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}-%i.log
-
-jwt:
-  secret:
-    key: ${{ secrets.JWT_KEY }}
