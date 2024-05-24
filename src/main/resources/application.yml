@@ -12,6 +12,9 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
+    url: ${{ secrets.POSTGRE_URL }}
+    username: ${{ secrets.DB_USERNAME }} 
+    password: ${{ secrets.POSTGRE_PASSWORD }}
     driver-class-name: org.postgresql.Driver
 
 springdoc:
@@ -37,3 +40,7 @@ logging:
       max-file-size: 50MB
       max-history: 7
       file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}-%i.log
+
+jwt:
+  secret:
+    key: ${{ secrets.JWT_KEY }}
