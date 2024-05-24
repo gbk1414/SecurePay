@@ -1,6 +1,6 @@
-package auth.entity;
+package com.example.securepay.auth.entity;
 
-import global.entity.BaseEntity;
+import com.example.securepay.global.entity.BaseEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

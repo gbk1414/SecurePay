@@ -1,6 +1,7 @@
-package auth.dto;
+package com.example.securepay.auth.dto;
 
-import auth.entity.UserRole;
+import com.example.securepay.auth.entity.UserRole;
+
 import lombok.Getter;
 
 @Getter

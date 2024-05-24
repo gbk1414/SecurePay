@@ -1,8 +1,8 @@
-package auth.entity;
+package com.example.securepay.auth.entity;
 
 import java.util.Date;
 
-import global.entity.BaseEntity;
+import com.example.securepay.global.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ import lombok.Getter;
 
 @Entity
 @Getter
-public class RefreshToken extends BaseEntity {
+public class AccessToken extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

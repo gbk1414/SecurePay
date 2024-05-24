@@ -1,4 +1,4 @@
-package global.entity;
+package com.example.securepay.global.entity;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package auth.entity;
+package com.example.securepay.auth.entity;
 
 public enum UserRole {
 	USER(Authority.USER),
