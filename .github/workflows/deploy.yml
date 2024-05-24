@@ -1,7 +1,6 @@
 # 워크 플로우 이름
 name: Java CI with Gradle 
 
-
 # 워크 플로우가 언제 실행 될지를 정한다.
 on:
   push:
@@ -9,15 +8,12 @@ on:
   pull_request:
     branches: [ "master" ]
 
-
 # 워크 플로우가 깃 레포에 대한 권한을 읽기 만 가능하게 설정한다.
 permissions:
   contents: read
 
-
 # 워크플로우에서 할 작업 정의한다.
 jobs:
-
   # 작업 환경 = 우분투 최신 버전
   build:
     runs-on: ubuntu-latest
@@ -33,7 +29,12 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-    
+
+    # gradle wrapper 파일에 실행 권한을 부여
+    # gradle wrapper = 개발자가 특정 버전의 Gradle을 미리 설치하지 않고도 Gradle 빌드를 실행할 수 있게 해주는 편리한 도구        
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
     # Application.yml 파일에 secret 값 넣어주기
     - name: Set Yaml
       uses: microsoft/variable-substitution@v1
@@ -45,16 +46,11 @@ jobs:
         spring.datasource.password: ${{ secrets.DB_PASSWORD }} 
         jwt.secret.key: ${{ secrets.JWT_KEY }}
 
-    # gradle wrapper 파일에 실행 권한을 부여
-    # gradle wrapper = 개발자가 특정 버전의 Gradle을 미리 설치하지 않고도 Gradle 빌드를 실행할 수 있게 해주는 편리한 도구        
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
     # Gradle 빌드 엑션을 이용해서 프로젝트 빌드
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2.6.0
       with:
-        arguments: build
+        arguments: build -Dspring.profiles.active=dev
 
     # 빌드해서 생긴 JAR 파일을 깃허브 아티팩트로 업로드!!
     - name: Upload build artifact
@@ -86,5 +82,5 @@ jobs:
         echo "${{ secrets.EC2_SSH_KEY }}" > SecurePay.pem
         chmod 600 SecurePay.pem
         scp -i SecurePay.pem -o StrictHostKeyChecking=no build/libs/SecurePay-0.0.1-SNAPSHOT.jar ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/SecurePay.jar
-        ssh -i SecurePay.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pgrep java | xargs kill -9; nohup java -jar /home/${{ secrets.EC2_USERNAME }}/SecurePay.jar > app.log 2>&1 &"
+        ssh -i SecurePay.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "pgrep java | xargs kill -9; nohup java -jar /home/${{ secrets.EC2_USERNAME }}/SecurePay.jar --spring.profiles.active=dev > app.log 2>&1 &"
         rm -f SecurePay.pem
