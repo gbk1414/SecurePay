@@ -33,6 +33,17 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
+    
+    # Application.yml 파일에 secret 값 넣어주기
+    - name: Set Yaml
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: ./src/main/resources/application.yml 
+      env:
+        spring.datasource.url: ${{ secrets.DB_URL }} 
+        spring.datasource.username: ${{ secrets.DB_USERNAME }} 
+        spring.datasource.password: ${{ secrets.DB_PASSWORD }} 
+        jwt.secret.key: ${{ secrets.JWT_KEY }}
 
     # gradle wrapper 파일에 실행 권한을 부여
     # gradle wrapper = 개발자가 특정 버전의 Gradle을 미리 설치하지 않고도 Gradle 빌드를 실행할 수 있게 해주는 편리한 도구        
