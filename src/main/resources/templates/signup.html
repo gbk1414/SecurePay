@@ -50,6 +50,7 @@
         const result = await response.text();
         if (response.ok) {
             alert('Signup successful');
+            window.location.href = '/auth/login-page';
             // Redirect to login page or perform other actions
         } else {
             alert('Signup failed: ' + result);

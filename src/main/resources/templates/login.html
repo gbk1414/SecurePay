@@ -40,6 +40,7 @@
         const result = await response.text();
         if (response.ok) {
             alert('Login successful. JWT: ' + result);
+            window.location.href = '/';
             // Save the JWT to local storage or use it for subsequent requests
         } else {
             alert('Login failed: ' + result);
